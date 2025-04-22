@@ -1,0 +1,142 @@
+nav {
+  position: fixed;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px;
+  border-bottom: 1px solid #333;
+  box-shadow: rgba(67, 66, 66, 0.35) 0px 5px 15px;
+  z-index: 3;
+}
+
+.logo img {
+  height: 30px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 30px;
+}
+
+.navLinks a {
+  color: var(--text-color);
+  position: relative;
+  text-decoration: none;
+}
+
+.navLinks a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  bottom: -5px;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navLinks a:hover {
+  color: var(--primary-color);
+}
+
+.navLinks a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.navLinks a:nth-last-child(3)::before {
+  background-color: var(--accent-color);
+}
+
+.navLinks a:nth-last-child(3) {
+  color: var(--accent-color);
+}
+
+.modeToggle {
+  border: none;
+  background: transparent;
+  color: var(--accent-color);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  min-width: 20px;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.mobileMenuButton {
+  position: relative;
+  background-color: transparent;
+  font-size: 20px;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.mobileBackdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.mobileContent {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 70%;
+  max-width: 300px;
+  height: 100%;
+  background: var(--background-color);
+  padding: 2rem;
+  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.mobileInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 5rem;
+}
+
+.mobileLink {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.mobileLink:hover {
+  color: var(--primary-color);
+}
+.mobileLink:hover {
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .navLink {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: block;
+  }
+}

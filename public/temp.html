@@ -2,128 +2,501 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sitesh Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Certifications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        body {
+            background: linear-gradient(135deg, #2c3e50, #1a2a6c);
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-    <link rel="stylesheet" href="../src/css/temp.css">
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #d0d0d0;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .main-cert {
+            position: relative;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .main-cert:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .main-logo {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 40px;
+            flex-shrink: 0;
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .main-logo i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .main-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #ff8e53;
+        }
+
+        .main-content .company {
+            font-size: 1.4rem;
+            color: #6c7a89;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .main-content .date {
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .main-content .description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #d0d0d0;
+            max-width: 700px;
+        }
+
+        .other-certs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 350px;
+            perspective: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .cert-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .card-front {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .udemy .card-logo {
+            background: linear-gradient(135deg, #a435f0, #ec5252);
+        }
+
+        .linkedin .card-logo {
+            background: linear-gradient(135deg, #0077b5, #00a0dc);
+        }
+
+        .misc .card-logo {
+            background: linear-gradient(135deg, #5a8c76, #8c7d5a);
+        }
+
+        .card-logo i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .card-front h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .card-front p {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+        }
+
+        .card-back {
+            background: rgba(30, 30, 40, 0.95);
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            padding: 30px;
+            text-align: left;
+        }
+
+        .card-back h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #ff8e53;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .course-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .course-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .course-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #6c7a89;
+        }
+
+        .course-item .provider {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            margin-bottom: 8px;
+        }
+
+        .course-item .date {
+            font-size: 0.9rem;
+            background: rgba(255, 142, 83, 0.15);
+            color: #ff8e53;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            z-index: -1;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 142, 83, 0.15) 0%, transparent 70%);
+            top: 10%;
+            right: 5%;
+        }
+
+        .square {
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(108, 122, 137, 0.3);
+            bottom: 10%;
+            left: 5%;
+            transform: rotate(25deg);
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .main-cert {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-logo {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .other-certs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .main-cert {
+                padding: 30px 20px;
+            }
+
+            .main-logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .main-logo i {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="particles-js"></div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-certificate"></i> Certifications</h1>
+            <p>Professional credentials and completed courses showcasing my expertise</p>
+        </header>
 
-    <nav>
-        <div class="logo"><img src="./assets/meicon-dark.png" alt=""></div>
-        <div class="nav-links">
-            <a href="#">Projects</a>
-            <button class="mode-toggle"><i class="fas fa-sun"></i></button>
-        </div>
-    </nav>
+        <div class="certifications">
+            <!-- Main Certification Card -->
+            <div class="main-cert">
+                <div class="main-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="main-content">
+                    <h2>Python Full Stack Developer</h2>
+                    <div class="company">Pentagon Space, Bengaluru</div>
+                    <div class="date">Apr 2024 - Dec 2024</div>
+                    <p class="description">
+                        Comprehensive training in Python full-stack development covering front-end technologies,
+                        back-end frameworks, databases, and deployment. Focused on building scalable web
+                        applications using Django, React, and modern DevOps practices.
+                    </p>
+                </div>
+            </div>
 
-    <div class="main">
-        <div class="greetings">
-            <span class="reference" data-text="General Kenobi">Hello There,</span> I am
-            <h1 data-text="Sitesh Roy">Sitesh Roy,</h1>
-            <div class="glitch-text">
-                a
-                <span>&nbsp;Software Engineer</span>
-                <span>&nbsp;Full Stack Developer</span>
-                <span>n AI/ML Engineer</span>
-                <span>&nbsp;Fast Learner</span>
-                <span>&nbsp;Problem Solver</span>
-                <span>&nbsp;Creative Thinker</span>
+            <!-- Other Certifications -->
+            <div class="other-certs">
+                <!-- Udemy Card -->
+                <div class="cert-card udemy">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-logo">
+                                <i class="fab fa-udemy"></i>
+                            </div>
+                            <h3>Udemy</h3>
+                            <p>Online Learning Platform</p>
+                            <div class="hover-hint">Hover to view courses</div>
+                        </div>
+                        <div class="card-back">
+                            <h3>Completed Courses</h3>
+                            <div class="course-item">
+                                <h4>Web Development Bootcamp</h4>
+                                <div class="provider">Udemy</div>
+                                <div class="date">Oct 2023</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Advanced JavaScript Concepts</h4>
+                                <div class="provider">Udemy</div>
+                                <div class="date">Nov 2023</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>React - The Complete Guide</h4>
+                                <div class="provider">Udemy</div>
+                                <div class="date">Sep 2022 - Oct 2022</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Python for Data Science</h4>
+                                <div class="provider">Udemy</div>
+                                <div class="date">Aug 2022</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Card -->
+                <div class="cert-card linkedin">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-logo">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <h3>LinkedIn Learning</h3>
+                            <p>Professional Development</p>
+                            <div class="hover-hint">Hover to view courses</div>
+                        </div>
+                        <div class="card-back">
+                            <h3>Completed Courses</h3>
+                            <div class="course-item">
+                                <h4>Advanced CSS: Layouts</h4>
+                                <div class="provider">LinkedIn Learning</div>
+                                <div class="date">Jan 2024</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>UX Design Fundamentals</h4>
+                                <div class="provider">LinkedIn Learning</div>
+                                <div class="date">Dec 2023</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Git Essential Training</h4>
+                                <div class="provider">LinkedIn Learning</div>
+                                <div class="date">Nov 2023</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>API Development in Python</h4>
+                                <div class="provider">LinkedIn Learning</div>
+                                <div class="date">Oct 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miscellaneous Card -->
+                <div class="cert-card misc">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-logo">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Miscellaneous</h3>
+                            <p>Additional Certifications</p>
+                            <div class="hover-hint">Hover to view courses</div>
+                        </div>
+                        <div class="card-back">
+                            <h3>Completed Courses</h3>
+                            <div class="course-item">
+                                <h4>30 Days JavaScript Masterclass</h4>
+                                <div class="provider">Pantech E-Learning</div>
+                                <div class="date">Sept 2023</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Cloud Fundamentals</h4>
+                                <div class="provider">AWS Academy</div>
+                                <div class="date">Jul 2023</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Agile Project Management</h4>
+                                <div class="provider">Scrum Alliance</div>
+                                <div class="date">May 2023</div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Cybersecurity Essentials</h4>
+                                <div class="provider">Cisco Networking Academy</div>
+                                <div class="date">Mar 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="project">
-        <div class="projectSection">
-            <div class="projectItem">
-                <a href="#">
-                    <div class="projectImage">
-                        <img src="assets/project1.png" alt="Project 1">
-                    </div>
-                    <div class="projectContent">
-                        <h3>Project 1</h3>
-                        <p>Brief description of Project 1 goes here.
-                            Brief description of Project 1 goes here.
-                            Brief description of Project 1 goes here.
-                        </p>
-                    </div>
-                </a>
-            </div>
-            <div class="projectItem">
-                <a href="#">
-                    <div class="projectImage">
-                        <img src="https://via.placeholder.com/600x400?text=Project+2" alt="Project 2">
-                    </div>
-                    <div class="projectContent">
-                        <h3>Project 2</h3>
-                        <p>Brief description of Project 2 goes here.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <!-- Decorative elements -->
+    <div class="decoration circle"></div>
+    <div class="decoration square"></div>
 
-        <!-- Section 2 -->
-        <div class="projectSection">
-            <div class="projectItem">
-                <a href="#">
-                    <div class="projectImage">
-                        <img src="assets/project1.png" alt="Project 3">
-                    </div>
-                    <div class="projectContent">
-                        <h3>Project 3</h3>
-                        <p>Brief description of Project 3 goes here.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="projectItem">
-                <a href="#">
-                    <div class="projectImage">
-                        <img src="assets/project1.png" alt="Project 3">
-                    </div>
-                    <div class="projectContent">
-                        <h3>Project 4</h3>
-                        <p>Brief description of Project 4 goes here.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <script>
+        // Add subtle animation to cards when they come into view
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.cert-card, .main-cert');
 
-        <!-- Section 3 -->
-        <div class="projectSection">
-            <div class="projectItem">
-                <a href="#">
-                    <div class="projectImage">
-                        <img src="https://via.placeholder.com/600x400?text=Project+5" alt="Project 5">
-                    </div>
-                    <div class="projectContent">
-                        <h3>Project 5</h3>
-                        <p>Brief description of Project 5 goes here.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="projectItem">
-                <a href="#">
-                    <div class="projectImage">
-                        <img src="https://via.placeholder.com/600x400?text=Project+6" alt="Project 6">
-                    </div>
-                    <div class="projectContent">
-                        <h3>Project 6</h3>
-                        <p>Brief description of Project 6 goes here.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+            });
+
+            setTimeout(() => {
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 200 * index);
+                });
+            }, 300);
+        });
+    </script>
 </body>
 
 </html>

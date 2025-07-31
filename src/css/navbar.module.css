@@ -4,7 +4,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 100px;
+  padding: var(--small-padding) var(--large-padding);
   border-bottom: 1px solid #333;
   box-shadow: rgba(67, 66, 66, 0.35) 0px 5px 15px;
   z-index: 3;
@@ -23,6 +23,7 @@ nav {
   color: var(--text-color);
   position: relative;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .navLinks a::before {

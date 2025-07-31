@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../css/main.css";
-import { useTheme } from "../context/ThemeContext";
+// import { useTheme } from "../context/ThemeContext";
 
 const Hero = () => {
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const [reference, setReference] = useState("Hello There!");
 
   const handleMouseEnter = () => setReference("General Kenobi!");
@@ -24,7 +24,7 @@ const Hero = () => {
           <div className="glitch-text">
             a<span>&nbsp;Software Engineer</span>
             <span>&nbsp;Full Stack Developer</span>
-            <span>n AI/ML Engineer</span>
+            <span>n AI/ML Enthusiast</span>
             <span>&nbsp;Fast Learner</span>
             <span>&nbsp;Problem Solver</span>
             <span>&nbsp;Creative Thinker</span>

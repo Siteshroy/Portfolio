@@ -1,110 +1,103 @@
 import "../css/main.css";
-import { useTheme } from "../context/ThemeContext";
+// import { useTheme } from "../context/ThemeContext";
 
 const Projects = () => {
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
+
+  const projectItems = [
+    {
+      title: "Project 1",
+      image: "project1.png",
+      desc: `Brief description of Project 1 goes here. Brief description of Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.`,
+    },
+    {
+      title: "Project 2",
+      image: "project2.png",
+      desc: `Brief description of Project 1 goes here. Brief description of Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.`,
+    },
+    {
+      title: "Project 3",
+      image: "project3.png",
+      desc: `Brief description of Project 1 goes here. Brief description of Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.`,
+    },
+    {
+      title: "Project 4",
+      image: "project4.png",
+      desc: `Brief description of Project 1 goes here. Brief description of Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.`,
+    },
+    {
+      title: "Project 5",
+      image: "project5.png",
+      desc: `Brief description of Project 1 goes here. Brief description of Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.`,
+    },
+    {
+      title: "Project 6",
+      image: "project6.png",
+      desc: `Brief description of Project 1 goes here. Brief description of Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.
+      Brief description of Project 1 goes here. Brief description of
+      Project 1 goes here. Brief description of Project 1 goes here.`,
+    },
+  ];
+
+  const projectGroups = projectItems.reduce((result, item, index) => {
+    const chunkIndex = Math.floor(index / 2);
+    if (!result[chunkIndex]) {
+      result[chunkIndex] = [];
+    }
+    result[chunkIndex].push(item);
+    return result;
+  }, []);
 
   return (
-    <div id="projectsSection" className="project">
-      <div className="project-section">
-        <div className="project-item">
-          <a href="#">
-            <div className="project-image">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/project1.png`}
-                alt="Project 1"
-              />
-            </div>
-            <div className="project-content">
-              <h3>Project 1</h3>
-              <p>
-                Brief description of Project 1 goes here. Brief description of
-                Project 1 goes here. Brief description of Project 1 goes here.
-                Brief description of Project 1 goes here. Brief description of
-                Project 1 goes here. Brief description of Project 1 goes here.
-                Brief description of Project 1 goes here. Brief description of
-                Project 1 goes here. Brief description of Project 1 goes here.
-              </p>
-            </div>
-          </a>
-        </div>
-        <div className="project-item">
-          <a href="#">
-            <div className="project-image">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/project2.png`}
-                alt="Project 2"
-              />
-            </div>
-            <div className="project-content">
-              <h3>Project 2</h3>
-              <p>Brief description of Project 2 goes here.</p>
-            </div>
-          </a>
-        </div>
+    <div id="projectsSection" className="project-section">
+      <div className="section-header">
+        <h1>
+          Featured&nbsp;<strong>Projects</strong>
+        </h1>
       </div>
 
-      <div className="project-section">
-        <div className="project-item">
-          <a href="#">
-            <div className="project-image">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/project3.png`}
-                alt="Project 3"
-              />
+      {projectGroups.map((group, groupIndex) => (
+        <div key={groupIndex} className="project-body">
+          {group.map((item, index) => (
+            <div key={index} className="project-item">
+              <a href="#">
+                <div className="project-image">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/assets/${item.image}`}
+                    alt={item.title}
+                  />
+                </div>
+                <div className="project-content">
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </a>
             </div>
-            <div className="project-content">
-              <h3>Project 3</h3>
-              <p>Brief description of Project 3 goes here.</p>
-            </div>
-          </a>
+          ))}
         </div>
-        <div className="project-item">
-          <a href="#">
-            <div className="project-image">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/project4.png`}
-                alt="Project 3"
-              />
-            </div>
-            <div className="project-content">
-              <h3>Project 4</h3>
-              <p>Brief description of Project 4 goes here.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div className="project-section">
-        <div className="project-item">
-          <a href="#">
-            <div className="project-image">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/project5.png`}
-                alt="Project 5"
-              />
-            </div>
-            <div className="project-content">
-              <h3>Project 5</h3>
-              <p>Brief description of Project 5 goes here.</p>
-            </div>
-          </a>
-        </div>
-        <div className="project-item">
-          <a href="#">
-            <div className="project-image">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/project6.png`}
-                alt="Project 6"
-              />
-            </div>
-            <div className="project-content">
-              <h3>Project 6</h3>
-              <p>Brief description of Project 6 goes here.</p>
-            </div>
-          </a>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "../css/navbar.module.css";
 import { useTheme } from "../context/ThemeContext";
@@ -8,9 +8,9 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const navItems = [
+    { name: "Projects", href: "projectsSection" },
     { name: "About", href: "aboutSection" },
     { name: "Contact", href: "contactSection" },
-    { name: "Projects", href: "projectsSection" },
   ];
   const blurStyle = {
     backdropFilter: `${isMobileMenuOpen ? "None" : "blur(6px)"}`,
@@ -21,6 +21,11 @@ const Navbar = () => {
     const sectionName = document.getElementById(section);
     if (sectionName)
       sectionName.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const downloadResume = () => {
+    const resumeUrl = `${process.env.PUBLIC_URL}/assets/pdf/meResume0525.pdf`;
+    window.open(resumeUrl, "_blank");
   };
 
   return (
@@ -49,9 +54,8 @@ const Navbar = () => {
 
           <motion.a
             whileHover={{ scale: 1.05 }}
-            href={`${process.env.PUBLIC_URL}/assets/meResume0525.pdf`}
+            onClick={downloadResume}
             className={`${styles.navLink} ${styles.resumeLink}`}
-            download="Sitesh_Resume.pdf"
           >
             Get Resume
           </motion.a>
@@ -116,9 +120,8 @@ const Navbar = () => {
                 ))}
                 <motion.a
                   whileHover={{ x: 4 }}
-                  href={`${process.env.PUBLIC_URL}/assets/meResume0525.pdf`}
+                  onClick={downloadResume}
                   className={styles.mobileLink}
-                  download="Sitesh_Resume.pdf"
                 >
                   Get Resume
                 </motion.a>

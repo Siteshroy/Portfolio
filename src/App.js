@@ -2,8 +2,8 @@ import React from "react";
 import { useTheme } from "./context/ThemeContext";
 import Navigation from "./components/Navbar";
 import Hero from "./components/Hero.jsx";
-import Projects from "./components/projects.jsx";
-
+import Projects from "./components/Projects.jsx";
+import About from "./components/About.jsx";
 import "./css/App.css";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
       <div className="main">
         <Hero />
         <Projects />
+        <About />
       </div>
     </div>
   );

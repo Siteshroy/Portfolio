@@ -5,20 +5,23 @@
   --error-color: #ff4b5c;
   --success-color: #4caf50;
   --gap: 40px;
-  --padding: 20px;
+  --small-padding: 20px;
+  --large-padding: 5vw;
   --border-radius: 40px;
   --card-bg: #1a1a1a;
   --accent-color: gold;
   --card-text: #fafafa;
+  --text-locked: #777;
   --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --text-size: 1rem;
 }
 
 [data-theme="light"] {
   --background-color: #4c4b4b;
   --text-color: #ececec;
-  --primary-color: gold;
+  --primary-color: #fff;
   --card-bg: #5e5d5d;
-  --card-text: #fff;
+  --card-text: #d0d0d0;
   --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -41,6 +44,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }

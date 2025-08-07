@@ -79,7 +79,7 @@ const Projects = () => {
       </div>
 
       {projectGroups.map((group, groupIndex) => (
-        <div key={groupIndex} className="project-body">
+        <div key={groupIndex} className="sticky project-body">
           {group.map((item, index) => (
             <div key={index} className="project-item">
               <a href="#">
